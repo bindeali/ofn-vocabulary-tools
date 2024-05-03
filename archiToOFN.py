@@ -85,6 +85,9 @@ with open(inputLocation, "r", encoding="utf-8") as inputFile:
                                  [1]] = termProperties[archiBindings.OFN_DESCRIPTION][0]
             if archiBindings.OFN_DATATYPE in termProperties and isinstance(term, Trope):
                 term.datatype = termProperties[archiBindings.OFN_DATATYPE][0]
+            # Shared
+            if archiBindings.RPP_SHARED in termProperties:
+                term.sharedInPPDF = termProperties[archiBindings.RPP_SHARED][0] == "ano"
             vocabulary.terms.append(term)
 
     for relationship in relationships:
